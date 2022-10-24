@@ -1,7 +1,7 @@
 # Nekos.Best Dart
-[![CI](https://github.com/Yakiyo/nekos_best_dart/workflows/ci.yml/badge.svg)](https://github.com/dart-lang/yaml/actions?query=workflow%3A"Dart+CI"+branch%3Amaster)
-[![Pub Package](https://img.shields.io/pub/v/nekos_best.svg)](https://pub.dev/packages/yaml)
-[![package publisher](https://img.shields.io/pub/publisher/nekos_best.svg)](https://pub.dev/packages/yaml/publisher)
+[![CI](https://github.com/Yakiyo/nekos_best_dart/actions/workflows/ci.yml/badge.svg)](https://github.com/Yakiyo/nekos_best_dart/actions/workflows/ci.yml)
+[![Pub Package](https://img.shields.io/pub/v/nekos_best.svg)](https://pub.dev/packages/nekos_best)
+
 
 A minimal Dart package for interacting with [Nekos.best](https://nekos.best) api.
 
