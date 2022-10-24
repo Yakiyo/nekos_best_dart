@@ -33,14 +33,19 @@ Fetch multiple results from a specified endpoint. Endpoint is must, the amount i
 Examples are in [example/fetch.dart](./example/fetch.dart) file.
 
 ## Response
-A nb response has the following fields. The `url` property is always present. If the endpoint returns a static image, `artist_href` and `artist_name` might be present, the other two will be absent. If the endpoint returns a gif image, `source_url` and `anime_name` might be present, the other two will be absent. Refer to the officials [nekos.best docs](https://docs.nekos.best/) for more info.
+A nb response has the following fields. Refer to the officials [nekos.best docs](https://docs.nekos.best/) for more info.
 ```ts
+// Image response
 {
   url: string,
-  artist_href: string | undefined,
-  artist_name: string | undefined,
-  source_url: string | undefined,,
-  anime_name: string | undefined,
+  artist_href: string,
+  artist_name: string,
+  source_url: string,
+}
+// gif response
+{
+  url: string,
+  anime_name: string,
 }
 ```
 You can access the fields like you would for a [Map](https://api.dart.dev/stable/1.10.1/dart-core/Map-class.html) class.
