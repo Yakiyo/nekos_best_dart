@@ -1,0 +1,23 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  lint-files:
+    runs-on: ubuntu-latest 
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dart-lang/setup-dart@v1.3
+        with:
+          sdk: '2.18.3'
+
+      - name: Install Dependencies
+        run: dart pub get
+
+      - name: Check Code Format
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Analyze Code
+        run: dart analyze
+
+      - name: Run Test
+        run: dart test
