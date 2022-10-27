@@ -1,6 +1,6 @@
 import 'util.dart' show NBResonse, CATEGORIES, request;
 
-Future<List<NBResonse>> fetch(String? endpoint, {int amount = 1}) async {
+Future<List<NBResonse>> fetch({String? endpoint = null, int amount = 1}) async {
   if (amount > 20) amount = 20;
   if (amount < 1) amount = 1;
   endpoint ??= (CATEGORIES.toList()..shuffle()).first;
