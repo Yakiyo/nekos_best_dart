@@ -19,7 +19,7 @@ Import the package in your dart file and use the methods
 ```dart
 import 'package:nekos_best/nekos_best.dart' as nb;
 
-var res = nb.fetch('neko');
+var res = nb.fetch(endpoint: 'neko');
 ```
 
 ## Methods
