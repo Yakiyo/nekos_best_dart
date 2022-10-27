@@ -9,12 +9,12 @@ void main() {
     });
 
     test('Random Fetch test', () async {
-      var res = await nb.fetch();
+      var res = await nb.fetch(null);
       expect(res.isNotEmpty, true);
     });
 
     test('Fetch Multiple test', () async {
-      var res = await nb.fetchMultiple('neko', amount: 4);
+      var res = await nb.fetch('neko', amount: 4);
       expect(res.length == 4, true);
     });
   });

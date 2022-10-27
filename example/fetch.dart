@@ -6,10 +6,10 @@ void main() async {
   print('printing neko $neko');
 
   // Fetching without a specified category
-  var rand = await nb.fetch();
+  var rand = await nb.fetch(null);
   print('printing random category $rand');
 
   // Fetching multiple results from a single endpoint
-  var multi = await nb.fetchMultiple('baka', amount: 6);
+  var multi = await nb.fetch('baka', amount: 6);
   print('printing multiple bakas $multi');
 }
