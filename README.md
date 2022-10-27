@@ -23,35 +23,29 @@ var res = nb.fetch('neko');
 ```
 
 ## Methods
+The package only exports a single function
 
-### `Future<Map<String, dynamic>> fetch([String? endpoint])`
-Fetch results from an optionally specified category. If mentioned, it'll fetch from that category. If not mentioned, it will use a random category. Returns a single [response map](#response)
+### `Future<List<NBResonse>> fetch({String? endpoint = null, int amount = 1})`
 
-### `Future<List<Map<String, dynamic>>> fetchMultiple(String endpoint, {int amount = 5})`
-Fetch multiple results from a specified endpoint. Endpoint is must, the amount is optional. If left unspecified, it defaults to 5. Maximum is 20. If provided value is more than 20, it resets to 20. Returns a list of [response map](#response)
+You can specify `endpoint` and `amount` thought both are optional. By default amount is set to 1. If endpoint is not specified, it chooses a random one.
+The function returns a List<[**NBResponse**](#response)>
 
 Examples are in [example/fetch.dart](./example/fetch.dart) file.
 
 ## Response
-A nb response has the following fields. Refer to the officials [nekos.best docs](https://docs.nekos.best/) for more info.
-```ts
-// Image response
-{
-  url: string,
-  artist_href: string,
-  artist_name: string,
-  source_url: string,
-}
-// gif response
-{
-  url: string,
-  anime_name: string,
+A nb response class has the following fields. Refer to the officials [nekos.best docs](https://docs.nekos.best/) for more info.
+```dart
+class NBResponse {
+  final String url;
+  final String? artist_href;
+  final String? artist_name;
+  final String? source_url;
+  final String? anime_name;
 }
 ```
-You can access the fields like you would for a [Map](https://api.dart.dev/stable/1.10.1/dart-core/Map-class.html) class.
+You can access the fields with dot notation i.e.
 ```dart
-var neko = nb.fetch('neko');
-print('Neko url: ${neko["url"]} Neko artist: ${neko["artist_name"]}');
+var neko_url = neko.url; // neko is an instance of NBResponse
 ```
 
 ## Author
