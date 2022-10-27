@@ -1,7 +1,7 @@
 name: nekos_best
 description: A dart package for interacting with nekos.best api. Easy and simple package to make requests to nekos.best and fetch results.
 version: 2.0.0
-homepage: https://github.com/Yakiyo/nekos_best_dart#README
+homepage: https://github.com/Yakiyo/nekos_best_dart
 repository: https://github.com/Yakiyo/nekos_best_dart
 
 environment:
