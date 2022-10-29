@@ -1,4 +1,4 @@
-import 'util.dart' show NBResonse, CATEGORIES, request;
+import 'util.dart' show NBResonse, CATEGORIES, requestJson;
 
 Future<List<NBResonse>> fetch({String? endpoint = null, int amount = 1}) async {
   if (amount > 20) amount = 20;
@@ -8,7 +8,7 @@ Future<List<NBResonse>> fetch({String? endpoint = null, int amount = 1}) async {
   if (!CATEGORIES.contains(endpoint)) {
     throw ('$endpoint is not a valid endpoint. Must be one of ${CATEGORIES.join(", ")}');
   }
-  var res = await request("$endpoint?amount=$amount")
+  var res = await requestJson("$endpoint?amount=$amount")
       .then((value) => value['results']);
   var arr = <NBResonse>[];
   res.forEach((element) {
@@ -16,3 +16,5 @@ Future<List<NBResonse>> fetch({String? endpoint = null, int amount = 1}) async {
   });
   return arr;
 }
+
+

@@ -62,11 +62,14 @@ const CATEGORIES = [
 ];
 
 /// Make a request to nekos.best. Private function for internal use only
-Future<Map<String, dynamic>> request(String path) async {
+Future<http.Response> request(String path) async {
   var url = Uri.parse('https://nekos.best/api/v2/$path');
-  var res =
-      await http.get(url, headers: {"User-Agent": "nekos_best.dart / 1.0.0"});
+  return await http.get(url, headers: {"User-Agent": "nekos_best.dart"});
+}
 
+/// Make http request to nekos.best and returns the body as json/map
+Future<Map<String, dynamic>> requestJson(String path) async {
+  var res = await request(path);
   if (res.statusCode == 200) {
     return convert.jsonDecode(res.body) as Map<String, dynamic>;
   } else {
