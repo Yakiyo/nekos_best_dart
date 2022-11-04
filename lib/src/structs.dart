@@ -98,7 +98,7 @@ class NBBufferResonse {
 
   @override
   String toString() {
-    var res = {'body': '[Instance of List<Int>]'};
+    var res = {'data': '[Instance of List<Int>]'};
     if (artist_href is String) {
       res['artist_href'] = Uri.decodeComponent(artist_href as String);
     }
