@@ -22,21 +22,26 @@ import 'package:nekos_best/nekos_best.dart' as nb;
 var res = nb.fetch(endpoint: 'neko');
 ```
 
-## Methods
-The package only exports a single function
+## Classes 
+Detailed documentation can be found in the [Package API Reference](https://pub.dev/documentation/nekos_best/latest/nekos_best/nekos_best-library.html)
 
-### `Future<List<NBResonse>> fetch({String? endpoint = null, int amount = 1})`
+The package exports a `Client` class and a `fetch` method. The fetch method uses the `Client` classes `Client.fetch` method internally. The client class has other two methods, a `search` method and a `fetchFile` method.
 
-You can specify `endpoint` and `amount` thought both are optional. By default amount is set to 1. If endpoint is not specified, it chooses a random one.
-The function returns a List<[**NBResponse**](#response)>
-
-Examples are in [example/fetch.dart](./example/fetch.dart) file.
+All possible usages are listed in details in the [example/](./example/) directory.
 
 ## Response
-A nb response class has the following fields. Refer to the officials [nekos.best docs](https://docs.nekos.best/) for more info.
+There are two classes: NBResponse & NBBufferResponse. They have the following fields. Refer to the officials [nekos.best docs](https://docs.nekos.best/) for more info.
 ```dart
 class NBResponse {
   final String url;
+  final String? artist_href;
+  final String? artist_name;
+  final String? source_url;
+  final String? anime_name;
+}
+
+class NBBufferResponse {
+  final List<int> data;
   final String? artist_href;
   final String? artist_name;
   final String? source_url;
@@ -47,7 +52,7 @@ You can access the fields with dot notation i.e.
 ```dart
 var neko_url = neko.url; // neko is an instance of NBResponse
 ```
-
+See [example/structs_example.dart](./example/structs_example.dart) for more.
 ## Author
 
 **nekos_best_dart** © [Yakiyo](https://github.com/Yakiyo). Authored and maintained by Yakiyo.
