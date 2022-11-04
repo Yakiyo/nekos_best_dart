@@ -1,3 +1,13 @@
+#### 2.1.0
+* More refactoring code
+* Create Client class for all the methods
+* Refactor external `fetch` function to internally use `Client.fetch`
+* Create search method
+* Create fetchFile method
+* Create NBBufferResponse class
+* Export Classes from the package too
+* Rewrite entire examples directory
+
 #### 2.0.0
 * Refactor entire code
 * Merge `fetch` and `fetchMultiple` to only `fetch` function
