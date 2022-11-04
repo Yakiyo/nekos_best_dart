@@ -23,7 +23,7 @@ var res = nb.fetch(endpoint: 'neko');
 ```
 
 ## Classes 
-Detailed documentation can be found in the [Package API Reference](https://pub.dev/documentation/nekos_best/latest/nekos_best/nekos_best-library.html)
+Detailed documentation can be found in the [Package API Reference](https://pub.dev/documentation/nekos_best/latest/nekos_best/nekos_best-library.html). There is also examples on general usage of the package in the [Official Nekos.Best docs](https://docs.nekos.best/examples/unofficial/dart.html).
 
 The package exports a `Client` class and a `fetch` method. The fetch method uses the `Client` classes `Client.fetch` method internally. The client class has other two methods, a `search` method and a `fetchFile` method.
 
