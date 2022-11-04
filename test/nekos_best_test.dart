@@ -23,7 +23,8 @@ void main() {
     });
 
     test('Search Test', () async {
-      var res = await client.search('Gochuumon wa Usagi Desuka??', endpoint: 'baka');
+      var res =
+          await client.search('Gochuumon wa Usagi Desuka??', endpoint: 'baka');
       expect(res.isNotEmpty, true);
     });
 

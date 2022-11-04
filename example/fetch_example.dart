@@ -5,6 +5,7 @@ import 'package:nekos_best/nekos_best.dart' show fetch, Client;
 void main() async {
   /// Using the regular `fetch` method
   var neko = await fetch(endpoint: 'neko');
+
   /// Using regular `fetch` with amount
   var fiveNekos = await fetch(endpoint: 'neko', amount: 5);
 

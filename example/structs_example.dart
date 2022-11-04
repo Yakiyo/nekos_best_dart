@@ -7,7 +7,8 @@ void main() async {
   var nbResponse = await client.fetch(endpoint: 'waifu');
 
   /// Access NBResponse class's property's with dot notation
-  print('Waifu link: ${nbResponse[0].url}, Art by: ${nbResponse[0].anime_name} ');
+  print(
+      'Waifu link: ${nbResponse[0].url}, Art by: ${nbResponse[0].anime_name} ');
   var nbres = nbResponse[0];
   // NBResponse properties
   nbres.url; // Always present. Type: String
@@ -27,5 +28,6 @@ void main() async {
   buffer.artist_name;
   buffer.artist_href;
   buffer.source_url;
+
   /// See [fetchfile_example.dart](./fetchfile_example.dart) on writing the data to a file
 }

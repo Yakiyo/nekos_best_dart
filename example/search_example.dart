@@ -9,9 +9,10 @@ void main() async {
   var search = client.search('Gochuumon wa Usagi Desuka??');
 
   /// Search using query & specifying an optional endpoint (defaults to a random category)
-  var searchWithEndpoint = await client.search('Gochuumon wa Usagi Desuka??', endpoint: 'baka');
+  var searchWithEndpoint =
+      await client.search('Gochuumon wa Usagi Desuka??', endpoint: 'baka');
 
   /// Search using query & specifying an optional endpoint & an optional amount (defaults to 1)
-  var searchComplex =
-      await client.search('Gochuumon wa Usagi Desuka??', endpoint: 'baka', amount: 3);
+  var searchComplex = await client.search('Gochuumon wa Usagi Desuka??',
+      endpoint: 'baka', amount: 3);
 }
