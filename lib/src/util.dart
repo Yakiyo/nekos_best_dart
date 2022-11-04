@@ -1,65 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
-
-class NBResonse {
-  late final String url;
-  late final String? artist_href;
-  late final String? artist_name;
-  late final String? source_url;
-  late final String? anime_name;
-  NBResonse(Map<String, dynamic> nb) {
-    // The type coercion is necessary as maps return String?
-    // which cannot be assigned to type String. Url is always
-    // present in both static and gif response
-    url = nb['url'] as String;
-    artist_href = nb['artist_href'];
-    artist_name = nb['artist_name'];
-    source_url = nb['source_url'];
-    anime_name = nb['anime_name'];
-  }
-}
-
-/// List of all the endpoints
-// ignore: constant_identifier_names
-const CATEGORIES = [
-  "baka",
-  "bite",
-  "blush",
-  "bored",
-  "cry",
-  "cuddle",
-  "dance",
-  "facepalm",
-  "feed",
-  "happy",
-  "highfive",
-  "hug",
-  "kiss",
-  "kitsune",
-  "laugh",
-  "neko",
-  "pat",
-  "poke",
-  "pout",
-  "shrug",
-  "slap",
-  "sleep",
-  "smile",
-  "smug",
-  "stare",
-  "think",
-  "thumbsup",
-  "tickle",
-  "wave",
-  "wink",
-  "waifu",
-  "kick",
-  "handhold",
-  "punch",
-  "shoot",
-  "husbando",
-  "yeet"
-];
+import 'dart:math' show Random;
+import './structs.dart';
 
 /// Make a request to nekos.best. Private function for internal use only
 Future<http.Response> request(String path) async {
@@ -76,3 +18,19 @@ Future<Map<String, dynamic>> requestJson(String path) async {
     throw 'Error when requesting content from api. Got status code ${res.statusCode}';
   }
 }
+
+/// Checks if a endpoint is valid or not
+void isValid(String endpoint) {
+  if (!CATEGORIES.contains(endpoint)) {
+    throw 'Invalid category. $endpoint is not valid. Must be one of ${CATEGORIES.join(', ')}';
+  }
+}
+
+/// Generates a random category
+String randomCat() {
+  return (CATEGORIES.toList()..shuffle()).first as String;
+}
+
+/// Simple arrow function to generate a random number
+/// between range min and max
+int rand(int min, int max) => min + Random().nextInt(max - min);
