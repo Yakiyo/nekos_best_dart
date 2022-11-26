@@ -45,13 +45,13 @@ const GIF_CATEGORIES = [
 
 final CATEGORIES = List.from(IMAGE_CATEGORIES)..addAll(GIF_CATEGORIES);
 
-class NBResonse {
+class NBResponse {
   late final String url;
   late final String? artist_href;
   late final String? artist_name;
   late final String? source_url;
   late final String? anime_name;
-  NBResonse(Map<String, dynamic> nb) {
+  NBResponse(Map<String, dynamic> nb) {
     // The type coercion is necessary as maps return String?
     // which cannot be assigned to type String. Url is always
     // present in both static and gif response

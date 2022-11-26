@@ -6,7 +6,7 @@ import 'structs.dart';
 ///
 /// If it's going to be used multiple times, it's better
 /// to initiate a [Client] class and use its fetch method
-Future<List<NBResonse>> fetch({String? endpoint = null, int amount = 1}) async {
+Future<List<NBResponse>> fetch({String? endpoint = null, int amount = 1}) async {
   return Client().fetch(endpoint: endpoint, amount: amount);
 }
 
@@ -21,7 +21,7 @@ class Client {
   ///
   /// Arguments endpoint and amount are both optional.
   /// Amount defaults to 1 and endpoint defaults to a randomly generated one.
-  Future<List<NBResonse>> fetch(
+  Future<List<NBResponse>> fetch(
       {String? endpoint = null, int amount = 1}) async {
     if (amount > 20) amount = 20;
     if (amount < 1) amount = 1;
@@ -34,9 +34,9 @@ class Client {
 
     var res = await requestJson("$endpoint?amount=$amount")
         .then((value) => value['results']);
-    var arr = <NBResonse>[];
+    var arr = <NBResponse>[];
     res.forEach((element) {
-      arr.add(NBResonse(element));
+      arr.add(NBResponse(element));
     });
     return arr;
   }
@@ -45,7 +45,7 @@ class Client {
   ///
   /// Refer to the official docs for more
   /// https://docs.nekos.best/api/endpoints.html#get-searchqueryxtypexcategoryxamountx
-  Future<List<NBResonse>> search(String query,
+  Future<List<NBResponse>> search(String query,
       {String? endpoint = null, int amount = 1}) async {
     if (amount > 20) amount = 20;
     if (amount < 1) amount = 1;
@@ -65,8 +65,8 @@ class Client {
       throw '';
     }
     var json = jsonDecode(res.body) as Map<String, dynamic>;
-    var arr = <NBResonse>[];
-    json['results'].forEach((e) => arr.add(NBResonse(e)));
+    var arr = <NBResponse>[];
+    json['results'].forEach((e) => arr.add(NBResponse(e)));
     return arr;
   }
 
