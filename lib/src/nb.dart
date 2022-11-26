@@ -1,3 +1,4 @@
+import 'dart:convert' show jsonDecode;
 import 'util.dart';
 import 'structs.dart';
 
@@ -55,11 +56,17 @@ class Client {
       isValid(endpoint);
     }
     var type = IMAGE_CATEGORIES.contains(endpoint) ? 1 : 2;
-    var res = await requestJson(
-            "search?amount=$amount&type=$type&query=${Uri.encodeComponent(query)}&category=$endpoint")
-        .then((value) => value['results']);
+    var res = await request(
+              "search?amount=$amount&type=$type&query=${Uri.encodeComponent(query)}&category=$endpoint");
+
+    var remaining = res.headers['x-rate-limit-remaining'];
+    var resetsIn = res.headers['x-rate-limit-remaining'];
+    if (remaining != null && resetsIn != null) {
+      throw '';
+    }
+    var json = jsonDecode(res.body) as Map<String, dynamic>;
     var arr = <NBResonse>[];
-    res.forEach((e) => arr.add(NBResonse(e)));
+    json['results'].forEach((e) => arr.add(NBResonse(e)));
     return arr;
   }
 
