@@ -114,3 +114,15 @@ class NBBufferResonse {
     return jsonEncode(res);
   }
 }
+
+class RateLimitError {
+  late final int remaining;
+  late final String resetsIn;
+
+  RateLimitError(this.remaining, this.resetsIn);
+
+  @override
+  String toString() {
+    return 'Rate Limit error. Remaining $remaining. Resets in $resetsIn';
+  }
+}
