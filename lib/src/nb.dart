@@ -50,7 +50,6 @@ class Client {
   /// https://docs.nekos.best/api/endpoints.html#get-searchqueryxtypexcategoryxamountx
   Future<List<NBResponse>> search(String query,
       {String? endpoint = null, int amount = 1}) async {
-
     if (RateLimit is RateLimitError) {
       if (!DateTime.now().isAfter(RateLimit!.resetsIn)) {
         throw RateLimit as RateLimitError;
