@@ -117,9 +117,12 @@ class NBBufferResonse {
 
 class RateLimitError {
   late final int remaining;
-  late final String resetsIn;
+  late final DateTime resetsIn;
 
-  RateLimitError(this.remaining, this.resetsIn);
+  RateLimitError(rem, reset) {
+    remaining = int.parse(rem);
+    resetsIn = DateTime.parse(reset);
+  }
 
   @override
   String toString() {
