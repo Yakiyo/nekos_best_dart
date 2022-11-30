@@ -115,11 +115,14 @@ class NBBufferResponse {
   }
 }
 
-class RateLimitError {
+/// Empty class for any sort of error
+abstract class NBError {}
+
+class NBRateLimitError extends NBError {
   late final int remaining;
   late final DateTime resetsIn;
 
-  RateLimitError(rem, reset) {
+  NBRateLimitError(rem, reset) {
     remaining = int.parse(rem);
     resetsIn = DateTime.parse(reset);
   }
@@ -127,5 +130,15 @@ class RateLimitError {
   @override
   String toString() {
     return 'Rate Limit error. Remaining $remaining. Resets in $resetsIn';
+  }
+}
+
+class NBArgumentError extends NBError {
+  late final String error;
+  NBArgumentError(this.error);
+
+  @override
+  String toString() {
+    return error;
   }
 }

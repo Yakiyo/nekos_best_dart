@@ -22,7 +22,7 @@ Future<Map<String, dynamic>> requestJson(String path) async {
 /// Checks if a endpoint is valid or not
 void isValid(String endpoint) {
   if (!CATEGORIES.contains(endpoint)) {
-    throw 'Invalid category. $endpoint is not valid. Must be one of ${CATEGORIES.join(', ')}';
+    throw NBArgumentError('Invalid category. $endpoint is not valid. Must be one of ${CATEGORIES.join(', ')}');
   }
 }
 

@@ -14,7 +14,7 @@ Future<List<NBResponse>> fetch(
 /// Base client to interact with the api.
 class Client {
   late Map<String, dynamic>? _endpoints;
-  RateLimitError? RateLimit;
+  NBRateLimitError? RateLimit;
 
   /// Getter for the endpoints
   Map<String, dynamic>? get endpoint => _endpoints;
@@ -50,11 +50,13 @@ class Client {
   /// https://docs.nekos.best/api/endpoints.html#get-searchqueryxtypexcategoryxamountx
   Future<List<NBResponse>> search(String query,
       {String? endpoint = null, int amount = 1}) async {
-    if (RateLimit is RateLimitError) {
+    // If Ratelimit isnt null, then...
+    if (RateLimit != null) {
+      // If ratelimit is yet valid, throw it to the user
       if (!DateTime.now().isAfter(RateLimit!.resetsIn)) {
-        throw RateLimit as RateLimitError;
+        throw RateLimit as NBRateLimitError;
       }
-      // RateLimit is no longer valid, so make it null
+      // else RateLimit is no longer valid, so make it null and continue
       RateLimit = null;
     }
 
@@ -70,11 +72,11 @@ class Client {
     var res = await request(
         "search?amount=$amount&type=$type&query=${Uri.encodeComponent(query)}&category=$endpoint");
 
-    var remaining = res.headers['x-rate-limit-remaining'];
-    if (remaining == 0) {
+    if (res.statusCode == 429) {
+      var remaining = res.headers['x-rate-limit-remaining'];
       var resetsIn = res.headers['x-rate-limit-remaining'];
-      RateLimit = RateLimitError(remaining as String, resetsIn as String);
-      throw RateLimit as RateLimitError;
+      RateLimit = NBRateLimitError(remaining as String, resetsIn as String);
+      throw RateLimit as NBRateLimitError;
     }
     var json = jsonDecode(res.body) as Map<String, dynamic>;
     var arr = <NBResponse>[];
@@ -89,9 +91,9 @@ class Client {
   Future<NBBufferResponse> fetchFile(String endpoint) async {
     endpoint = endpoint.toLowerCase();
     isValid(endpoint);
-    
+
     _endpoints ??= await requestJson('endpoints');
-    
+
     var metadata = _endpoints?[endpoint] as Map<String, dynamic>;
     var min = int.parse(metadata['min'] as String);
     var max = int.parse(metadata['max'] as String);
