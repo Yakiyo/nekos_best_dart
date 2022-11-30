@@ -86,7 +86,7 @@ class Client {
   ///
   /// For more advanced options, you should use the `Client.fetch()` method and
   /// fetch the file yourself.
-  Future<NBBufferResonse> fetchFile(String endpoint) async {
+  Future<NBBufferResponse> fetchFile(String endpoint) async {
     endpoint = endpoint.toLowerCase();
     isValid(endpoint);
     if (_endpoints.isEmpty) {
@@ -97,6 +97,6 @@ class Client {
     var max = int.parse(metadata['max'] as String);
     var res = await request(
         '$endpoint/${rand(min, max).toString().padLeft((metadata['max'] as String).length, '0')}.${metadata['format']}');
-    return NBBufferResonse(res);
+    return NBBufferResponse(res);
   }
 }

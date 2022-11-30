@@ -82,13 +82,13 @@ class NBResponse {
   }
 }
 
-class NBBufferResonse {
+class NBBufferResponse {
   late final List<int> data;
   late final String? artist_href;
   late final String? artist_name;
   late final String? source_url;
   late final String? anime_name;
-  NBBufferResonse(Response res) {
+  NBBufferResponse(Response res) {
     artist_href = res.headers['artist_href'];
     artist_name = res.headers['artist_name'];
     source_url = res.headers['source_url'];
