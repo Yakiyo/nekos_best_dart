@@ -13,7 +13,7 @@ Future<List<NBResponse>> fetch(
 
 /// Base client to interact with the api.
 class Client {
-  late Map<String, dynamic>? _endpoints;
+  Map<String, dynamic>? _endpoints;
   NBRateLimitError? RateLimit;
 
   /// Getter for the endpoints
