@@ -2,4 +2,4 @@
 library nekos_best;
 
 export 'src/nb.dart' show fetch, Client;
-export 'src/structs.dart' show NBResponse, NBBufferResponse, RateLimitError;
+export 'src/structs.dart' show NBResponse, NBBufferResponse, NBError, NBRateLimitError, NBArgumentError;
