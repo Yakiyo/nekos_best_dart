@@ -13,11 +13,11 @@ Future<List<NBResponse>> fetch(
 
 /// Base client to interact with the api.
 class Client {
-  Map<String, dynamic> _endpoints = {};
+  late Map<String, dynamic>? _endpoints;
   RateLimitError? RateLimit;
 
   /// Getter for the endpoints
-  Map<String, dynamic> get endpoint => _endpoints;
+  Map<String, dynamic>? get endpoint => _endpoints;
 
   /// Fetch a random instance of a endpoint from the api
   ///
@@ -89,10 +89,10 @@ class Client {
   Future<NBBufferResponse> fetchFile(String endpoint) async {
     endpoint = endpoint.toLowerCase();
     isValid(endpoint);
-    if (_endpoints.isEmpty) {
-      _endpoints = await requestJson('endpoints');
-    }
-    var metadata = _endpoints[endpoint] as Map<String, dynamic>;
+    
+    _endpoints ??= await requestJson('endpoints');
+    
+    var metadata = _endpoints?[endpoint] as Map<String, dynamic>;
     var min = int.parse(metadata['min'] as String);
     var max = int.parse(metadata['max'] as String);
     var res = await request(
