@@ -1,3 +1,10 @@
+#### 2.1.1
+* Further refactoring
+* Better error handling
+    * Create error class and its sub classes
+* Major typos on class name fixed
+* Handle ratelimiting for search method
+
 #### 2.1.0
 * More refactoring code
 * Create Client class for all the methods
