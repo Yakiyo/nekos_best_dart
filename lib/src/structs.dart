@@ -41,6 +41,9 @@ const GIF_CATEGORIES = [
   "shoot",
   "yeet",
   "poke",
+  "nod",
+  "nom",
+  "nope"
 ];
 
 final CATEGORIES = List.from(IMAGE_CATEGORIES)..addAll(GIF_CATEGORIES);
