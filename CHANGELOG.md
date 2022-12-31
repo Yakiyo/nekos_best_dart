@@ -1,3 +1,6 @@
+#### 2.1.2
+* Add nod, nom, nope endpoints
+
 #### 2.1.1
 * Further refactoring
 * Better error handling
