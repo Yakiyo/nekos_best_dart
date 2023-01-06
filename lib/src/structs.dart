@@ -50,7 +50,7 @@ final CATEGORIES = List.from(IMAGE_CATEGORIES)..addAll(GIF_CATEGORIES);
 
 /// A class represting a response object from the api
 ///
-/// Property url is always present. 
+/// Property url is always present.
 /// For image endpoints, it will have artist_href, artist_name & source_url
 /// For gif endpoints, it will have anime_name
 class NBResponse {
