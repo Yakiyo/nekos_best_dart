@@ -48,6 +48,11 @@ const GIF_CATEGORIES = [
 
 final CATEGORIES = List.from(IMAGE_CATEGORIES)..addAll(GIF_CATEGORIES);
 
+/// A class represting a response object from the api
+///
+/// Property url is always present. 
+/// For image endpoints, it will have artist_href, artist_name & source_url
+/// For gif endpoints, it will have anime_name
 class NBResponse {
   late final String url;
   late final String? artist_href;
@@ -85,6 +90,9 @@ class NBResponse {
   }
 }
 
+/// A class representing a Buffer response from the api. This is returned
+/// from the `Client.fetchFile()` method when the api returns raw binary data
+/// for an image file
 class NBBufferResponse {
   late final List<int> data;
   late final String? artist_href;
@@ -121,6 +129,8 @@ class NBBufferResponse {
 /// Empty class for any sort of error
 abstract class NBError {}
 
+/// An extended NBError class representing a rate limit error.
+/// This is returned due to api response
 class NBRateLimitError extends NBError {
   late final int remaining;
   late final DateTime resetsIn;
@@ -136,6 +146,8 @@ class NBRateLimitError extends NBError {
   }
 }
 
+/// An extended NBError class representing an error in passing arguments to the function.
+/// This is returned by the library.
 class NBArgumentError extends NBError {
   late final String error;
   NBArgumentError(this.error);
