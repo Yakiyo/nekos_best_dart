@@ -89,16 +89,8 @@ class Client {
   /// For more advanced options, you should use the `Client.fetch()` method and
   /// fetch the file yourself.
   Future<NBBufferResponse> fetchFile(String endpoint) async {
-    endpoint = endpoint.toLowerCase();
-    isValid(endpoint);
-
-    _endpoints ??= await requestJson('endpoints');
-
-    var metadata = _endpoints?[endpoint] as Map<String, dynamic>;
-    var min = int.parse(metadata['min'] as String);
-    var max = int.parse(metadata['max'] as String);
-    var res = await request(
-        '$endpoint/${rand(min, max).toString().padLeft((metadata['max'] as String).length, '0')}.${metadata['format']}');
-    return NBBufferResponse(res);
+    final res = (await fetch(endpoint: endpoint))[0];
+    final bytes = await request(res.url).then((value) => value.bodyBytes);
+    return NBBufferResponse(bytes, res);
   }
 }
