@@ -99,12 +99,11 @@ class NBBufferResponse {
   late final String? artist_name;
   late final String? source_url;
   late final String? anime_name;
-  NBBufferResponse(Response res) {
-    artist_href = res.headers['artist_href'];
-    artist_name = res.headers['artist_name'];
-    source_url = res.headers['source_url'];
-    anime_name = res.headers['anime_name'];
-    data = res.bodyBytes;
+  NBBufferResponse(this.data, NBResponse res) {
+    artist_href = res.artist_href;
+    artist_name = res.artist_name;
+    source_url = res.source_url;
+    anime_name = res.anime_name;
   }
 
   @override
