@@ -45,6 +45,7 @@ const GIF_CATEGORIES = [
   "nope"
 ];
 
+/// Mixed categories
 final CATEGORIES = List.from(IMAGE_CATEGORIES)..addAll(GIF_CATEGORIES);
 
 /// A class represting a response object from the api
