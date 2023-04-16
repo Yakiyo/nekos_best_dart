@@ -1,3 +1,6 @@
+#### 2.1.3
+* Update fetch file method to fetch an entry first then refetch its file content
+
 #### 2.1.2
 * Add nod, nom, nope endpoints
 
