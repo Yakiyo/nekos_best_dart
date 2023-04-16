@@ -1,5 +1,4 @@
 import 'dart:convert' show jsonEncode;
-import 'package:http/http.dart' show Response;
 
 /// List of Image endpoints
 // ignore: constant_identifier_names
