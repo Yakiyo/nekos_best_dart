@@ -42,7 +42,12 @@ const GIF_CATEGORIES = [
   "poke",
   "nod",
   "nom",
-  "nope"
+  "nope",
+  "handshake",
+  "lurk",
+  "nibble",
+  "peck",
+  "yawn",
 ];
 
 /// Mixed categories
