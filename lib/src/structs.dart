@@ -48,6 +48,10 @@ const GIF_CATEGORIES = [
   "nibble",
   "peck",
   "yawn",
+  "handshake", 
+  "lurk", 
+  "peck",
+  "yawn",
 ];
 
 /// Mixed categories
