@@ -1,3 +1,6 @@
+#### 2.1.5
+* Add angry and run endpoints
+
 #### 2.1.3
 * Update fetch file method to fetch an entry first then refetch its file content
 
