@@ -52,6 +52,8 @@ const GIF_CATEGORIES = [
   "lurk",
   "peck",
   "yawn",
+  "angry",
+  "run",
 ];
 
 /// Mixed categories
