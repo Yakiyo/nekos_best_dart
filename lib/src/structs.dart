@@ -54,6 +54,8 @@ const GIF_CATEGORIES = [
   "yawn",
   "angry",
   "run",
+  "bonk",
+  "tableflip",
 ];
 
 /// Mixed categories
