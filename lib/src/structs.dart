@@ -56,6 +56,21 @@ const GIF_CATEGORIES = [
   "run",
   "bonk",
   "tableflip",
+  "bleh",
+	"blowkiss",
+	"carry",
+	"clap",
+	"confused",
+	"kabedon",
+	"lappillow",
+	"nya",
+	"salute",
+	"shake",
+	"shocked",
+	"sip",
+	"spin",
+	"teehee",
+	"wag",
 ];
 
 /// Mixed categories
